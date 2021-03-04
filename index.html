@@ -21,17 +21,30 @@
         You have <span class="dp">{{points.toFixed(3)}}</span> points. <br>
         You are getting <span class="g">{{getPointGen().toFixed(3)}}</span> points every second.
       </button><br>
-      <button>
+      <button onclick="buyUpgrade(0, 0)">
         <h2>Basic Multiplier</h2>
-        Multiply Gain By 2.000. {{upgrades[0] ? "[bought]" : ""}}<br>
-        Cost: 3.000.
+        Multiply Gain By 2.000.<br>
+        Cost: 3.000.<br>
+        {{hasUpgrade(0, 0) ? "[bought]" : ""}}
+      </button>
+      <button onclick="buyUpgrade(0, 1)">
+        <h2>Powerizer</h2>
+        Square gain above 1 <br>
+        Sqare root gain below 1<br>
+        Cost: 5.000.<br>
+        {{hasUpgrade(0, 1) ? "[bought]" : ""}}
+      </button>
+      <button onclick="buyUpgrade(0, 2)">
+        <h2>Scaling Nerf</h2>
+        Nerf the point gain nerf from points from ^2 to ^1.5. <br>
+        Cost: 12.000.<br>
+        {{hasUpgrade(0, 2) ? "[bought]" : ""}}
       </button>
     </div>
-    
+
     <script src="https://unpkg.com/vue@next"></script>
     <script src="exp.js"></script>
-    <script src="l1.js"></script>
-    <script src="script.js"></script>
     <script src="tools.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

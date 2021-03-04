@@ -71,3 +71,39 @@ function mergeDeep(target, ...sources) {
 
   return mergeDeep(target, ...sources);
 }
+
+function buyUpgrade(layer,id){
+  let upgrades = {
+    0: {
+      0() {
+        if (game.points.gte(3) && !hasUpgrade(0,0)) {
+          game.points = game.points.sub(3)
+          game.upgrades[0] = true
+        }
+      },
+      1() {
+        if (game.points.gte(5) && !hasUpgrade(0,1)) {
+          game.points = game.points.sub(5)
+          game.upgrades[1] = true
+        }
+      },
+      2(){
+        if (game.points.gte(12) && !hasUpgrade(0,2)) {
+          game.points = game.points.sub(12)
+          game.upgrades[2] = true
+        }
+      },
+
+    }
+  }
+  if(!upgrades[layer][id])throw Error(`"${id}" is not an id for an upgrade in the ${layer} layer.`)
+  upgrades[layer][id]()
+}
+// forgot to make this vue friendly
+function hasUpgrade(layer,id, data = game) {
+  if (layer === 0) {
+    return data.upgrades[id]
+  } else {
+    return data[layer].upgrades[id]
+  }
+}
