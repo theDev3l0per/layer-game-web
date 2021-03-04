@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Hello!</title>
+    <title>Layer Game - Web Cv0</title>
     
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
@@ -16,11 +16,21 @@
   <body>
     
     <div id="app">
-      points: {{points.toFixed(3)}}
+      <h1>Layer Game</h1>
+      <button id="dbl">
+        You have <span class="dp">{{points.toFixed(3)}}</span> points. <br>
+        You are getting <span class="g">{{getPointGen().toFixed(3)}}</span> points every second.
+      </button><br>
+      <button>
+        <h2>Basic Multiplier</h2>
+        Multiply Gain By 2.000. {{upgrades[0] ? "[bought]" : ""}}<br>
+        Cost: 3.000.
+      </button>
     </div>
     
     <script src="https://unpkg.com/vue@next"></script>
     <script src="exp.js"></script>
+    <script src="l1.js"></script>
     <script src="script.js"></script>
     <script src="tools.js"></script>
   </body>

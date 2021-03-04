@@ -1,11 +1,44 @@
-/* CSS files add styling rules to your content */
-
 body {
-  font-family: helvetica, arial, sans-serif;
-  margin: 2em;
+  margin: 0em;
+  background-color: #41515E;
+  color: #ffffff;
+  text-align: center;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
+button {
+  margin: 0em;
+  background-color: #99BEDE;
+  font-size: 1.85vh;
+  color: #41515E;
+  border-color: #4075A4;
+  border-width: 5px;
+  width: 30vw;
+  height: 18vh;
 }
+
+#dbl {
+  width: 100vw;
+  height: 9vh;
+  border-width: 5px;
+  background-color: #99BEDE;
+  border-color: #4075A4;
+  color: #41515E;
+}
+
+.dp {
+  font-size: 2.5vh;
+  color: #7474C4
+}
+
+.g {
+  font-size: 2.1vh;
+  color: #7474C4
+}
+
+#tabs {
+  width: 100%;
+}
+
+button:active {transform: scale(0.95);}
+
+button:focus {outline: none;}

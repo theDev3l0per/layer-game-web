@@ -8,15 +8,22 @@ function tick(diff) {
   game.points = game.points.add(getPointGen().mul(diff/1000)) // makes points go up bvy 1/s
 }
 
-function getPointGen() {
-  return D(1)
+function getPointGen(data = game) {
+  return D(1).div(data.points.add(1).pow(2))
 }
 
-var app = Vue.createApp({
+const app = Vue.createApp({
   data() {
     return {
       lastTick: Date.now(), // add your vars to this object, access them with game.yourVariable
-      points: D(0)
+      points: D(0),
+      layer: 0,
+      upgrades: [false]
     }
   },
+  methods: {
+    getPointGen() {
+      return getPointGen(this)
+    }
+  }
 })
