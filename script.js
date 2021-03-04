@@ -5,11 +5,11 @@ let game = {}
 
 function tick(diff) {
   // your tick things here
-  game.points = game.points.add(D(1).mul(diff/1000)) // makes points go up bvy 1/s
+  game.points = game.points.add(getPointGen().mul(diff/1000)) // makes points go up bvy 1/s
 }
 
 function getPointGen() {
-
+  return D(1)
 }
 
 var app = Vue.createApp({
