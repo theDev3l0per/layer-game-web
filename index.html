@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/style.css">
     
     <!-- import the webpage's javascript file -->
-    <script src="/script.js" defer></script>
   </head>  
   <body>
     
@@ -19,27 +18,55 @@
       <h1>Layer Game</h1>
       <button id="dbl">
         You have <span class="dp">{{points.toFixed(3)}}</span> points. <br>
-        You are getting <span class="g">{{getPointGen().toFixed(3)}}</span> points every second.
+        You are getting <span class="g">{{getPointGen().toFixed(3)}}</span> points every second. <br>
+        The point gain formula is 1/(points^{{hasUpgrade(0, 2) ? hasUpgrade(0, 5) ? 1.25 : 1.5 : 2}})
       </button><br>
-      <button onclick="buyUpgrade(0, 0)">
-        <h2>Basic Multiplier</h2>
-        Multiply Gain By 2.000.<br>
-        Cost: 3.000.<br>
-        {{hasUpgrade(0, 0) ? "[bought]" : ""}}
-      </button>
-      <button onclick="buyUpgrade(0, 1)">
-        <h2>Powerizer</h2>
-        Square gain above 1 <br>
-        Sqare root gain below 1<br>
-        Cost: 5.000.<br>
-        {{hasUpgrade(0, 1) ? "[bought]" : ""}}
-      </button>
-      <button onclick="buyUpgrade(0, 2)">
-        <h2>Scaling Nerf</h2>
-        Nerf the point gain nerf from points from ^2 to ^1.5. <br>
-        Cost: 12.000.<br>
-        {{hasUpgrade(0, 2) ? "[bought]" : ""}}
-      </button>
+      <br><div id="tabs">
+        <button style="width:10%;height:2.5vw;" onclick="game.tab=0">Main</button>
+        <button style="width:10%;height:2.5vw;" onclick="game.tab=1">Settings</button>
+    </div><br>
+      <div v-if="tab === 0">
+        <button onclick="buyUpgrade(0, 0)">
+          <h2>Basic Multiplier</h2>
+          Point gain is doubled<br>
+          Cost: 3 Points<br>
+          {{hasUpgrade(0, 0) ? "[bought]" : "[missing]"}}
+        </button>
+        <button onclick="buyUpgrade(0, 1)">
+          <h2>Powerizer</h2>
+          Gain is x^{{hasUpgrade(0,4) ? "3" : "2"}} if gain > 1, gain is x^{{hasUpgrade(0,4) ? "0.5" : "0.3"}} if gain < 1<br>
+          Cost: 5 Points<br>
+          {{hasUpgrade(0, 1) ? "[bought]" : "[missing]"}}
+        </button>
+        <button onclick="buyUpgrade(0, 2)">
+          <h2>Scaling Nerf</h2>
+          Formula exponent is lowered by 0.{{hasUpgrade(0,5) ? "75" : "5"}}<br>
+          Cost: 12 Points<br>
+          {{hasUpgrade(0, 2) ? "[bought]" : "[missing]"}}
+        </button>
+        <button onclick="buyUpgrade(0, 3)">
+          <h2>Log Buff</h2>
+          Multiply gain by log<sub>sqrt(points+1)</sub>(points+1) <br>
+          Cost: 20 Points<br>
+          {{hasUpgrade(0, 3) ? "[bought]" : "[missing]"}}
+        </button>
+        <button onclick="buyUpgrade(0, 4)">
+          <h2>Powerizerizer</h2>
+          Make the <b>powerizer</b> 50% better<br>
+          Cost: 33 Points<br>
+          {{hasUpgrade(0, 4) ? "[bought]" : "[missing]"}}
+        </button>
+        <button onclick="buyUpgrade(0, 5)">
+          <h2>Double Whammy</h2>
+          <b>Scaling Nerf</b> is 50% more effective<br>
+          Cost: 100 Points<br>
+          {{hasUpgrade(0, 5) ? "[bought]" : "[missing]"}}
+        </button>
+      </div>
+      <div v-if="tab === 1">
+        <h1>Settings</h1>
+        <button onclick="hardReset()" style="width:10%;height:2vw;">oh no reset</button>
+      </div>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>

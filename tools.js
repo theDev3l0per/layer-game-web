@@ -46,8 +46,8 @@ function load() {
 
 window.onload = () => {
   load()
-  setInterval(loop,20) // 50 ticks per second
-  setInterval(save,10000)
+  setInterval(loop,20) // 50 ticks per second, 20ms delay
+  setInterval(save,10000) // 0.1 tick per second, 10000ms/10s delay
 }
 
 function isObject(item) {
@@ -93,7 +93,24 @@ function buyUpgrade(layer,id){
           game.upgrades[2] = true
         }
       },
-
+      3() {
+        if (game.points.gte(20) && !hasUpgrade(0,3)) {
+          game.points = game.points.sub(20)
+          game.upgrades[3] = true
+        }
+      },
+      4() {
+        if (game.points.gte(33) && !hasUpgrade(0,4)) {
+          game.points = game.points.sub(33)
+          game.upgrades[4] = true
+        }
+      },
+      5() {
+        if (game.points.gte(100) && !hasUpgrade(0,5)) {
+          game.points = game.points.sub(100)
+          game.upgrades[5] = true
+        }
+      }
     }
   }
   if(!upgrades[layer][id])throw Error(`"${id}" is not an id for an upgrade in the ${layer} layer.`)

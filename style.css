@@ -12,13 +12,13 @@ button {
   color: #41515E;
   border-color: #4075A4;
   border-width: 5px;
-  width: 30vw;
+  width: 33vw;
   height: 18vh;
 }
 
 #dbl {
   width: 100vw;
-  height: 9vh;
+  height: 14vh;
   border-width: 5px;
   background-color: #99BEDE;
   border-color: #4075A4;
@@ -26,12 +26,12 @@ button {
 }
 
 .dp {
-  font-size: 2.5vh;
+  font-size: 3.25vh;
   color: #7474C4
 }
 
 .g {
-  font-size: 2.1vh;
+  font-size: 2.5vh;
   color: #7474C4
 }
 
